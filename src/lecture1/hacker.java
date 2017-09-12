@@ -1,5 +1,4 @@
-
-
+package lecture1;
 import java.util.Scanner;
 
 public class hacker {
@@ -11,7 +10,6 @@ public class hacker {
 	}
 	public hacker(String msg){
 		this.encrypted=msg;
-	
 		
 	}
 	public void decrypt(){
@@ -42,6 +40,7 @@ public class hacker {
 		hacker h=new hacker(enc);
 		System.out.println("Possible text:");
 		h.decrypt();
+		s.close();
 		
 	}
 	

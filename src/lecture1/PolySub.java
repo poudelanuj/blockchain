@@ -1,3 +1,4 @@
+package lecture1;
 public class PolySub implements chiper {
 	public static char [][] arr;
 	final String AB = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

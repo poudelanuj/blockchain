@@ -1,3 +1,4 @@
+package lecture1;
 public class MonoSub implements chiper {
 	
 	private String plain;
