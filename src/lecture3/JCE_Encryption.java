@@ -1,7 +1,9 @@
 package lecture3;
 
+import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 import java.util.Scanner;
 
 import javax.crypto.BadPaddingException;
@@ -11,11 +13,13 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
-public class JCE_Encryption {
+public class JCE_Encryption{
 	
-	public static void main(String [] args){
+	private static Scanner scanner;
+
+	public static void main(String [] args) throws UnsupportedEncodingException{
 		try{
-			Scanner scanner=new Scanner(System.in);
+			scanner = new Scanner(System.in);
 			KeyGenerator keyGenerator=KeyGenerator.getInstance("DES");
 			SecretKey myDesKey=keyGenerator.generateKey();
 			
@@ -24,17 +28,14 @@ public class JCE_Encryption {
 
 			desCipher.init(Cipher.ENCRYPT_MODE, myDesKey);
 			
-			byte[] text=scanner.nextLine().getBytes();
-			System.out.println("Text [byte format]:"+text);
-			System.out.println("Text : "+new String(text));
-			
+			String text=scanner.nextLine();
 			//encrypt the text
-			byte[] textEncrypted=desCipher.doFinal(text);
-			System.out.println("Text Encrypted : "+textEncrypted);
+			String encryptedText=Base64.getEncoder().encodeToString(desCipher.doFinal(text.getBytes("UTF-8")));
+			System.out.println("Text Encrypted : "+encryptedText);
 			
 			//init the same chiper for description
 			desCipher.init(Cipher.DECRYPT_MODE, myDesKey);
-			byte[] textDecrypted=desCipher.doFinal(textEncrypted);
+			String textDecrypted=new String(desCipher.doFinal(Base64.getDecoder().decode(encryptedText)));
 			System.out.println("Text Decrypted : "+new String(textDecrypted));
 			
 			
