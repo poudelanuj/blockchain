@@ -17,7 +17,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class CBC_Mode implements BlockCipher{
 
-	private byte[] iv;
+	public byte[] iv;
 	public String Encrypt(String plainText, SecretKeySpec key) {
 		IvParameterSpec ivParameterSpec = new IvParameterSpec(getIV());
 		String encryptedText=null;
