@@ -18,7 +18,9 @@ public class HMAC_Test {
 		value=hmac.Encrypt_MAC("Some Text","Hello nepal");
 		retValue=hmac.Decrypt_MAC(value[0], "Hello nepal");
 		assertEquals("Some Text",retValue[0]);// test for send text
+		
 		assertEquals(value[1],retValue[1]);// test for the mac key
+		
 		
 	}
 
