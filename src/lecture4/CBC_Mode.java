@@ -57,6 +57,8 @@ public class CBC_Mode implements BlockCipher{
 		String decrypted=null;
 		try {
 			cipherDecrypt = Cipher.getInstance("AES/CBC/PKCS5Padding");
+			//cipherDecrypt=Cipher.getInstance("AES/CFB/NoPadding");
+			// TODO this is used for CBF
 			cipherDecrypt.init(Cipher.DECRYPT_MODE, key, ivParameterSpec);
 			decrypted = new String(cipherDecrypt.doFinal(Base64.getDecoder().decode(encryptedText)));
 			
